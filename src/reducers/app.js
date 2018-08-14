@@ -1,14 +1,14 @@
-const initState = {products:[]};
+const initState = {location:[]};
 
 export default function app(state = initState, action){
 
     switch(action.type){
 
-        case 'SET_PRODUCTS':
+        case 'SET_LOCATION':
 
         return{
             ...state,
-            products: [...action.data]
+            location: [...action.data]
         };
 
         default: return state;

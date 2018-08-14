@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Content from './components/Content';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import { getProductsAction } from './actions/app';
+import { getLocationAction } from './actions/app';
 import { connect } from 'react-redux';
 
 let locationData;
@@ -16,14 +16,14 @@ class App extends Component {
 
     super(props);
     this.state = {
-      products: ''
+      location: ''
     }
 
   }
 
   componentDidMount() {
     /*setInterval(() => {*/
-    this.props.getProducts()
+    this.props.getLocation()
     /*}, 5000);*/
   }
 
@@ -37,20 +37,14 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    products: state.app.products
-  }
-}
-
-
-
 export default connect(
-  mapStateToProps,
+  state => ({
+      location: state.app.location
+  }),
   dispatch => ({
-    getProducts: () => {
-      dispatch(getProductsAction());
-    }
+    getLocation:() => {            
+          dispatch(getLocationAction());
+      }
   })
 )(App);
 // <Header  locationData={this.state.locationData} />

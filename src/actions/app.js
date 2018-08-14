@@ -1,4 +1,4 @@
-export const getProductsAction = (callback) => dispatch => {
+export const getLocationAction = (callback) => dispatch => {
     fetch("http://api.open-notify.org/iss-now.json", {
 		method:'GET'
 			}).then((response) =>
@@ -7,7 +7,7 @@ export const getProductsAction = (callback) => dispatch => {
 		}).then((d) =>
 		{
             console.log(d);
-			dispatch({type:'SET_PRODUCTS', data:d});
+			dispatch({type:'SET_LOCATION', data:d});
 			callback ? callback() : '';
 		});
 }
