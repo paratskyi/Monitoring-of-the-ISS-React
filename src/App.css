@@ -1,0 +1,70 @@
+.p-2.lokated, .p-2.date, .container {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  font-weight: 500;
+}
+
+.mapWrap{
+  min-height: 500px;
+}
+
+#map {
+  height: 100%;
+}
+
+.astrosList{
+  overflow: auto;
+  height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  font-weight: 500;
+}
+
+.totalAmount{
+  
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  font-weight: 500;
+}
+
+.astro{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  font-weight: 500;
+}
+
+.astro i{
+  float: left;
+  font-size: 60px;
+}
+
+.astro span{
+  display: block;
+  margin: 0px auto;
+  line-height: 60px;
+  font-size: 20px;
+  text-align: center;
+}
+
+::-webkit-scrollbar
+{
+width: 12px;  /* for vertical scrollbars */
+height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+}
+
+@media (max-width: 1200px){
+  .astro span{
+      font-size: 16px;
+  }
+
+  .date h3{
+      font-size: 20px;
+  }
+}
+
