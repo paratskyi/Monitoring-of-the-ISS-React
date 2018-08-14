@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { getLocationAction } from '../actions/app';
+import { connect } from 'react-redux';
+
 class Lokated extends Component {
 
     constructor(props) {
@@ -12,9 +15,9 @@ class Lokated extends Component {
                 <div className="p-2 lokated">
                     <h3>ISS is now lokated at:</h3>
                     <span className="locationText">
-                    {console.log(this)}
-                        latitude: {this.props.locationData.iss_position.latitude}&nbsp;
-                        longitude: {this.props.locationData.iss_position.longitude}
+                        {console.log(this.props)}
+                        latitude:
+                        longitude:
                     </span>
                 </div>
             </div>
@@ -22,4 +25,13 @@ class Lokated extends Component {
     }
 }
 
-export default Lokated;
+export default connect(
+    state => ({
+        location: state.app.location
+    }),
+    dispatch => ({
+        getLocation: (callback) => {
+            dispatch(getLocationAction(callback));
+        }
+    })
+)(Lokated);
