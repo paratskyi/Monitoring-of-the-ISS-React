@@ -6,15 +6,18 @@ import { connect } from 'react-redux';
 class AstroList extends Component {
 
     setTotalAmount() {
-        if(this.props.astros.message === 'success'){
-        let totalAmount = [];
+        if (this.props.astros.message === 'success') {
+            let totalAmount = [];
 
-        this.props.astros.people.map(function (el) {
-            if (el.craft === 'ISS') {
-                totalAmount.push(el);
-            }
-        });
-        return totalAmount.length}
+            this.props.astros.people.map(function (el) {
+                if (el.craft === 'ISS') {
+                    totalAmount.push(el);
+                }
+            });
+            return totalAmount.length
+        } else {
+            return (<span>Loading...</span>);
+        }
     }
 
     render() {
@@ -35,9 +38,5 @@ export default connect(
     state => ({
         astros: state.appAmount.astros
     }),
-    dispatch => ({
-        
-    })
 )(AstroList);
-//{this.setTotalAmount()}
-// <Astro astrosAmount={this.props.astrosAmount} />
+

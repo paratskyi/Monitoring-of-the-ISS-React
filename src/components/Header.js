@@ -7,25 +7,20 @@ import { connect } from 'react-redux';
 
 class Header extends Component {
 
-  constructor(props) {
-    super(props);
-}
+    componentWillMount() {
+        setInterval(() => {
+            this.props.getLocation()
+        }, 5000);
+    }
 
-componentWillMount() {
-    /*setInterval(() => {*/
-    this.props.getLocation()
-    /*}, 5000);*/
-}
-
-
-  render() {
-    return (
-        <div className='row'>
-            <Lokated />
-            <Date />
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div className='row'>
+                <Lokated />
+                <Date />
+            </div>
+        );
+    }
 }
 
 export default connect(

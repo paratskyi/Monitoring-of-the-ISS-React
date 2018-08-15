@@ -8,37 +8,39 @@ import { connect } from 'react-redux';
 
 class Content extends Component {
 
-  componentWillMount() {
-    /*setInterval(() => {*/
-    this.props.getAstros()
-    this.props.getLocation()
-    /*}, 5000);*/
-}
+    componentWillMount() {
+        this.props.getAstros()
+        this.props.getLocation()
+        setInterval(() => {
+            this.props.getAstros()
+            this.props.getLocation()
+        }, 5000);
+    }
 
-  render() {
-    return (
-        <div className='row'>
-            <MapContainer />
-            <AstroList />
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div className='row'>
+                <MapContainer />
+                <AstroList />
+            </div>
+        );
+    }
 }
 
 export default connect(
-  state => ({
-      astros: state.appAmount.astros,
-      location: state.app.location
-  }),
-  dispatch => ({
-      getAstros: (callback) => {
-          dispatch(getAstrosAction(callback));
-      },
-      getLocation: () => {
-        dispatch(getLocationAction());
-    }
-  })
+    state => ({
+        astros: state.appAmount.astros,
+        location: state.app.location
+    }),
+    dispatch => ({
+        getAstros: () => {
+            dispatch(getAstrosAction());
+        },
+        getLocation: () => {
+            dispatch(getLocationAction());
+        }
+    })
 )(Content);
 
-// <MapContainer />
+
 

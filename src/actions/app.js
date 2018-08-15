@@ -6,7 +6,6 @@ export const getLocationAction = (callback) => dispatch => {
 			return response.json()
 		}).then((d) =>
 		{
-            console.log(d);
 			dispatch({type:'SET_LOCATION', data:d});
 			callback ? callback() : '';
 		});
@@ -20,7 +19,6 @@ export const getAstrosAction = (callback) => dispatch => {
 			return response.json()
 		}).then((d) =>
 		{
-            console.log(d);
 			dispatch({type:'SET_ASTROS', data:d});
 			callback ? callback() : '';
 		});
