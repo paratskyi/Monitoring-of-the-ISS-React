@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { getLocationAction } from '../actions/app';
 import { connect } from 'react-redux';
 
 class Lokated extends Component {
@@ -10,18 +9,18 @@ class Lokated extends Component {
     }
 
     render() {
+        if(this.props.location.message === 'success'){
         return (
             <div className="col-md-8 p-2 ">
                 <div className="p-2 lokated">
                     <h3>ISS is now lokated at:</h3>
                     <span className="locationText">
-                        {console.log(this.props)}
-                        latitude:
-                        longitude:
+                        latitude: {this.props.location.iss_position.latitude}	&nbsp;	
+                        longitude: {this.props.location.iss_position.longitude}
                     </span>
                 </div>
             </div>
-        );
+        );}else{return 'fdsgsdfg'}
     }
 }
 
@@ -30,8 +29,6 @@ export default connect(
         location: state.app.location
     }),
     dispatch => ({
-        getLocation: (callback) => {
-            dispatch(getLocationAction(callback));
-        }
+        
     })
 )(Lokated);

@@ -10,18 +10,16 @@ class Data extends Component {
         super(props);
     }
 
-    
     render() {
-
+        if(this.props.location.message === 'success'){
         return (
             <div className="col-md-4 p-2 ">
                 <div className="p-2 date">
-                {console.log(this.props)}
-                    <h3>Current UTC time: <Timestamp time={this.props.timestamp} format='time' autoUpdate={60} /></h3>
-                    <span><Timestamp time={this.props.timestamp} format='date' autoUpdate /></span>
+                    <h3>Current UTC time: <Timestamp time={this.props.location.timestamp} format='time' autoUpdate={60} /></h3>
+                    <span><Timestamp time={this.props.location.timestamp} format='date' autoUpdate /></span>
                 </div>
             </div>
-        );
+        );}else{return 'fdsgsdfg'}
     }
 }
 
@@ -30,9 +28,7 @@ export default connect(
         location: state.app.location
     }),
     dispatch => ({
-        getLocation: () => {
-            dispatch(getLocationAction());
-        }
+        
     })
 )(Data);
 

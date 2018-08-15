@@ -8,9 +8,11 @@ export default function app(state = initState, action){
 
         return{
             ...state,
-            location: action.data // [...action.data]
+            location: action.data, // [...action.data]
         };
 
         default: return state;
     }
 }
+
+

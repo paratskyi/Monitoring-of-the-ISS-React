@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import Astro from './Astro';
 
+import { connect } from 'react-redux';
+
 class AstroList extends Component {
 
     setTotalAmount() {
-        
+        if(this.props.astros.message === 'success'){
         let totalAmount = [];
 
-        this.props.astrosAmount.people.map(function (el) {
+        this.props.astros.people.map(function (el) {
             if (el.craft === 'ISS') {
                 totalAmount.push(el);
             }
         });
-        return totalAmount.length
+        return totalAmount.length}
     }
 
     render() {
         return (
             <div className="col-md-4 p-2 listWrap">
-
-                <Astro astrosAmount={this.props.astrosAmount} />
-
+                <Astro />
                 <div className="p-2 totalAmount text-center">
                     <span>
                         Total amount: {this.setTotalAmount()} people on ISS
@@ -31,5 +31,13 @@ class AstroList extends Component {
     }
 }
 
-export default AstroList;
-
+export default connect(
+    state => ({
+        astros: state.appAmount.astros
+    }),
+    dispatch => ({
+        
+    })
+)(AstroList);
+//{this.setTotalAmount()}
+// <Astro astrosAmount={this.props.astrosAmount} />

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+
+import { connect } from 'react-redux';
  
 
 class Map extends Component {
   render() {
-    
+    if(this.props.location.message === 'success'){
     const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
-        defaultCenter={{ lat: +this.props.locationData.iss_position.latitude, lng: +this.props.locationData.iss_position.longitude }}
+        defaultCenter={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }}
         defaultZoom={4}
       >
       </GoogleMap>
@@ -22,9 +24,18 @@ class Map extends Component {
         </GoogleMapExample>
       </div>
     );
-  }
+  }else{return 'sdgfdsg'}
+}
 };
-export default Map;
+
+export default connect(
+  state => ({
+    location: state.app.location
+}),
+dispatch => ({
+    
+})
+)(Map);
 
 
                     

@@ -11,11 +11,12 @@ class Header extends Component {
     super(props);
 }
 
-  componentDidMount() {
+componentWillMount() {
     /*setInterval(() => {*/
     this.props.getLocation()
     /*}, 5000);*/
 }
+
 
   render() {
     return (
@@ -28,12 +29,12 @@ class Header extends Component {
 }
 
 export default connect(
-  state => ({
-      location: state.app.location
-  }),
-  dispatch => ({
-      getLocation: (callback) => {
-          dispatch(getLocationAction(callback));
-      }
-  })
+    state => ({
+        location: state.app.location
+    }),
+    dispatch => ({
+        getLocation: () => {
+            dispatch(getLocationAction());
+        }
+    })
 )(Header);
