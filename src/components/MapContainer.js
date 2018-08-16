@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 class MapContainer extends Component {
 
-
   shouldComponentUpdate() {
     if (this.props.location.message === 'success') {
       return false;

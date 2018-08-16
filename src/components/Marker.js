@@ -10,7 +10,7 @@ class MyMarker extends Component {
     if (this.props.location.message === 'success') {
       return (
         <div>
-          <Marker position={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }} />
+          <Marker icon={{ url: './iss.png' }} position={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }} />
         </div>
       );
     }
