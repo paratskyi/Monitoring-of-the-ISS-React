@@ -20,7 +20,7 @@ class MapContainer extends Component {
     if (this.props.location.message === 'success') {
       const Map = withGoogleMap(props => (
         <GoogleMap
-          defaultCenter={{ lat: 49.8685, lng: 52.8075 }}
+          defaultCenter={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }}
           defaultZoom={3}
         >
           <MyMarker />
