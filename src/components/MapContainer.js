@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import MyMarker from './Marker';
 
 import { connect } from 'react-redux';
 
 class MapContainer extends Component {
+
+
+  shouldComponentUpdate() {
+    if (this.props.location.message === 'success') {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   render() {
 
     if (this.props.location.message === 'success') {
       const Map = withGoogleMap(props => (
         <GoogleMap
-          defaultCenter={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }}
+          defaultCenter={{ lat: 49.8685, lng: 52.8075 }}
           defaultZoom={3}
         >
-          {props.isMarkerShown && <Marker position={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }} />}
+          <MyMarker />
         </GoogleMap>
       ));
       return (
@@ -34,6 +44,7 @@ class MapContainer extends Component {
       )
     }
   }
+
 };
 
 export default connect(
