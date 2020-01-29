@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import { getAstrosAction } from '../actions/app';
 import { connect } from 'react-redux';
+
+import { getAstros, getLocation } from '../actions/data';
+
 
 class Astro extends Component {
 
@@ -20,9 +22,9 @@ class Astro extends Component {
             <span>{el.name}</span>
           </div>
         }
-      });
+      })
     }
-  };
+  }
 
   render() {
     return (
@@ -33,13 +35,20 @@ class Astro extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    astros: state.appAmount.astros
-  }),
-  dispatch => ({
-    getAstros: (callback) => {
-      dispatch(getAstrosAction(callback));
-    }
-  })
-)(Astro);
+const mapStateToProps = state => {
+  return {
+    astros: state.astros,
+    location: state.location,
+    isLoading: state.dataIsLoading,
+    hasErrored: state.dataHasErrored,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getAstros: () => dispatch(getAstros()),
+    getLocation: () => dispatch(getLocation()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Astro)

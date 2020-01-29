@@ -3,6 +3,9 @@ import Timestamp from 'react-timestamp';
 
 import { connect } from 'react-redux';
 
+import { getAstros, getLocation } from '../actions/data';
+
+
 class Data extends Component {
 
     render() {
@@ -23,9 +26,21 @@ class Data extends Component {
     }
 }
 
-export default connect(
-    state => ({
-        location: state.app.location
-    }),
-)(Data);
+const mapStateToProps = state => {
+    return {
+        astros: state.astros,
+        location: state.location,
+        isLoading: state.dataIsLoading,
+        hasErrored: state.dataHasErrored,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAstros: () => dispatch(getAstros()),
+        getLocation: () => dispatch(getLocation()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Data)
 

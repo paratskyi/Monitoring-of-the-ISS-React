@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
-import app from './app';
-import appAmount from './appAmount';
+import { astros, location, dataIsLoading, dataHasErrored } from './data';
 
 export default combineReducers({
-    app,
-    appAmount
+    astros,
+    location,
+    dataIsLoading,
+    dataHasErrored
 });

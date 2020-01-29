@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import AstroList from './AstrosList';
 
-import { getAstrosAction } from '../actions/app';
-import { getLocationAction } from '../actions/app';
+import { getAstros, getLocation } from '../actions/data';
 import { connect } from 'react-redux';
 
 class Content extends Component {
@@ -11,9 +10,11 @@ class Content extends Component {
     componentWillMount() {
         this.props.getAstros()
         this.props.getLocation()
+        console.log(this.props)
         setInterval(() => {
             this.props.getAstros()
             this.props.getLocation()
+            console.log(this.props)
         }, 5000);
     }
 
@@ -27,20 +28,23 @@ class Content extends Component {
     }
 }
 
-export default connect(
-    state => ({
-        astros: state.appAmount.astros,
-        location: state.app.location
-    }),
-    dispatch => ({
-        getAstros: () => {
-            dispatch(getAstrosAction());
-        },
-        getLocation: () => {
-            dispatch(getLocationAction());
-        }
-    })
-)(Content);
+const mapStateToProps = state => {
+    return {
+        astros: state.astros,
+        location: state.location,
+        isLoading: state.dataIsLoading,
+        hasErrored: state.dataHasErrored,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAstros: () => dispatch(getAstros()),
+        getLocation: () => dispatch(getLocation()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content)
 
 
 

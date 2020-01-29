@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
+import { getAstros, getLocation } from '../actions/data';
 
-class Lokated extends Component {
+class Located extends Component {
 
     render() {
         if (this.props.location.message === 'success') {
             return (
                 <div className="col-md-8 p-2 ">
-                    <div className="p-2 lokated">
-                        <h3>ISS is now lokated at:</h3>
+                    <div className="p-2 Located">
+                        <h3>ISS is now Located at:</h3>
                         <span className="locationText">
                             latitude: {this.props.location.iss_position.latitude}	&nbsp;
                         longitude: {this.props.location.iss_position.longitude}
@@ -25,11 +26,20 @@ class Lokated extends Component {
     }
 }
 
-export default connect(
-    state => ({
-        location: state.app.location
-    }),
-    dispatch => ({
+const mapStateToProps = state => {
+    return {
+        astros: state.astros,
+        location: state.location,
+        isLoading: state.dataIsLoading,
+        hasErrored: state.dataHasErrored,
+    }
+}
 
-    })
-)(Lokated);
+const mapDispatchToProps = dispatch => {
+    return {
+        getAstros: () => dispatch(getAstros()),
+        getLocation: () => dispatch(getLocation()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Located)

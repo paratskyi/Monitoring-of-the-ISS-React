@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Lokated from './Lokated';
+import Located from './Located';
 import Date from './Date';
 
-import { getLocationAction } from '../actions/app';
+import { getAstros, getLocation } from '../actions/data';
 import { connect } from 'react-redux';
 
 class Header extends Component {
 
     componentWillMount() {
+        this.props.getLocation()
         setInterval(() => {
             this.props.getLocation()
         }, 5000);
@@ -16,20 +17,27 @@ class Header extends Component {
     render() {
         return (
             <div className='row'>
-                <Lokated />
+                <Located />
                 <Date />
             </div>
         );
     }
 }
 
-export default connect(
-    state => ({
-        location: state.app.location
-    }),
-    dispatch => ({
-        getLocation: () => {
-            dispatch(getLocationAction());
-        }
-    })
-)(Header);
+const mapStateToProps = state => {
+    return {
+        astros: state.astros,
+        location: state.location,
+        isLoading: state.dataIsLoading,
+        hasErrored: state.dataHasErrored,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAstros: () => dispatch(getAstros()),
+        getLocation: () => dispatch(getLocation()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
