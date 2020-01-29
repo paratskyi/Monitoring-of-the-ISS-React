@@ -3,9 +3,6 @@ import Astro from './Astro';
 
 import { connect } from 'react-redux';
 
-import { getAstros, getLocation } from '../actions/data';
-
-
 class AstroList extends Component {
 
     setTotalAmount() {
@@ -40,18 +37,8 @@ class AstroList extends Component {
 const mapStateToProps = state => {
     return {
         astros: state.astros,
-        location: state.location,
-        isLoading: state.dataIsLoading,
-        hasErrored: state.dataHasErrored,
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getAstros: () => dispatch(getAstros()),
-        getLocation: () => dispatch(getLocation()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AstroList)
+export default connect(mapStateToProps)(AstroList)
 

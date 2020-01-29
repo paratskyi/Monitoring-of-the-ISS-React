@@ -1,3 +1,19 @@
+const getData = (url, action, dispatch) => {
+	dispatch(dataIsLoading(true));
+
+	fetch(url)
+		.then(response => {
+			if (!response.ok) throw Error(response.statusText);
+
+			dispatch(dataIsLoading(false));
+			return response;
+
+		})
+		.then(response => response.json())
+		.then(data => dispatch(action(data)))
+		.catch(() => dispatch(loadingDataHasErrored(true)));
+}
+
 export const loadingDataHasErrored = boolean => {
 	return {
 		type: 'LOADING_DATA_HAS_ERRORED',
@@ -26,21 +42,6 @@ export const loadingLocationFetchSuccess = location => {
 	}
 }
 
-const getData = (url, action, dispatch) => {
-	dispatch(dataIsLoading(true));
-
-	fetch(url)
-		.then(response => {
-			if (!response.ok) throw Error(response.statusText);
-
-			dispatch(dataIsLoading(false));
-			return response;
-
-		})
-		.then(response => response.json())
-		.then(data => dispatch(action(data)))
-		.catch(() => dispatch(loadingDataHasErrored(true)));
-}
 
 
 export const getLocation = () => dispatch => {

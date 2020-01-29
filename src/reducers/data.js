@@ -1,4 +1,4 @@
-export function dataHasErrored(state = false, action) {
+export const dataHasErrored = (state = false, action) => {
   switch (action.type) {
     case 'LOADING_DATA_HAS_ERRORED':
       return action.hasErrored;
@@ -8,7 +8,7 @@ export function dataHasErrored(state = false, action) {
   }
 }
 
-export function dataIsLoading(state = false, action) {
+export const dataIsLoading = (state = false, action) => {
   switch (action.type) {
     case 'DATA_IS_LOADING':
       return action.isLoading;
@@ -18,7 +18,7 @@ export function dataIsLoading(state = false, action) {
   }
 }
 
-export function astros(state = [], action) {
+export const astros = (state = [], action) => {
   switch (action.type) {
     case 'LOADING_ASTROS_FETCH_SUCCESS':
       return action.astros;
@@ -28,7 +28,7 @@ export function astros(state = [], action) {
   }
 }
 
-export function location(state = [], action) {
+export const location = (state = [], action) => {
   switch (action.type) {
     case 'LOADING_LOCATION_FETCH_SUCCESS':
       return action.location;

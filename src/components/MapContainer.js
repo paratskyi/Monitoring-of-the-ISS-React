@@ -3,7 +3,6 @@ import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import MyMarker from './Marker';
 
 import { connect } from 'react-redux';
-import { getAstros, getLocation } from '../actions/data';
 
 
 class MapContainer extends Component {
@@ -50,21 +49,11 @@ class MapContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    astros: state.astros,
     location: state.location,
-    isLoading: state.dataIsLoading,
-    hasErrored: state.dataHasErrored,
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAstros: () => dispatch(getAstros()),
-    getLocation: () => dispatch(getLocation()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)
+export default connect(mapStateToProps)(MapContainer)
 
 
 

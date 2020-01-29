@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { getAstros, getLocation } from '../actions/data';
-
-
 class Astro extends Component {
-
-  componentWillMount() {
-    /*setInterval(() => {*/
-    this.props.getAstros()
-    /*}, 5000);*/
-  }
 
   showPeople() {
     if (this.props.astros.message === 'success') {
@@ -38,17 +29,7 @@ class Astro extends Component {
 const mapStateToProps = state => {
   return {
     astros: state.astros,
-    location: state.location,
-    isLoading: state.dataIsLoading,
-    hasErrored: state.dataHasErrored,
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAstros: () => dispatch(getAstros()),
-    getLocation: () => dispatch(getLocation()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Astro)
+export default connect(mapStateToProps)(Astro)
