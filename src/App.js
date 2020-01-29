@@ -27,7 +27,7 @@ class App extends Component {
         </div>
       );
     } else {
-      return <span>Loading...</span>
+      return <img src="./preloader.gif" alt="Loading..."/>
     }
   }
 }
