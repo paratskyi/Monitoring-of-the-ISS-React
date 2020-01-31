@@ -11,17 +11,17 @@ import './App.css';
 class App extends Component {
 
   getData() {
-    this.props.getAstros()
-    this.props.getLocation()
+    this.props.getAstros();
+    this.props.getLocation();
   }
 
   updateData() {
-    this.getData()
+    this.getData();
     setInterval(() => this.getData(), 5000);
   }
 
   isDataFetchSuccess() {
-    return this.props.location.message === 'success' && this.props.location.message === 'success'
+    return this.props.location.message === 'success' && this.props.location.message === 'success';
   }
 
   generateApp() {
@@ -34,22 +34,23 @@ class App extends Component {
   }
 
   generatePreloader() {
-    return <img src="./preloader.gif" alt="Loading..." />
+    return <img src="./preloader.gif" alt="Loading..." />;
   }
 
   generateErrorMessage() {
-    return <h2>Something went wrong... Try again later</h2>
+    return <h2>Something went wrong... Try again later</h2>;
   }
 
   componentDidMount() {
-    this.updateData()
+    this.updateData();
   }
 
   render() {
-    if (this.props.hasErrored) return this.generateErrorMessage()
-    if (!this.isDataFetchSuccess()) return this.generatePreloader()
+    if (this.props.hasErrored) return this.generateErrorMessage();
+    
+    if (!this.isDataFetchSuccess()) return this.generatePreloader();
 
-    return this.generateApp()
+    return this.generateApp();
   }
 }
 
@@ -57,16 +58,15 @@ const mapStateToProps = state => {
   return {
     astros: state.astros,
     location: state.location,
-    isLoading: state.dataIsLoading,
     hasErrored: state.dataHasErrored,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     getAstros: () => dispatch(getAstros()),
     getLocation: () => dispatch(getLocation()),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

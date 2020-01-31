@@ -7,12 +7,12 @@ import Astro from './Astro';
 class AstroList extends Component {
 
   setTotalAmount() {
-    return astrosAtTheISS(this.props.astros.people).length
+    return astrosAtTheISS(this.props.astros.people).length;
   }
 
   generateTotalAmount() {
     return (
-      <div className="p-2 totalAmount text-center">
+      <div className="p-2 total-amount text-center">
         <span>
           Total amount: {this.setTotalAmount()} people on ISS
         </span>
@@ -22,7 +22,7 @@ class AstroList extends Component {
 
   render() {
     return (
-      <div className="col-md-4 p-2 listWrap">
+      <div className="col-md-4 p-2 list-wrap">
         <Astro />
         {this.generateTotalAmount()}
       </div>
@@ -33,8 +33,8 @@ class AstroList extends Component {
 const mapStateToProps = state => {
   return {
     astros: state.astros,
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(AstroList)
+export default connect(mapStateToProps)(AstroList);
 

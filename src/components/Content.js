@@ -5,14 +5,14 @@ import AstroList from './AstrosList';
 
 class Content extends Component {
 
-   render() {
-        return (
-            <div className='row'>
-                <MapContainer />
-                <AstroList />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className='row'>
+        <MapContainer />
+        <AstroList />
+      </div>
+    );
+  }
 }
 
-export default Content
+export default Content;

@@ -6,17 +6,7 @@ export const dataHasErrored = (state = false, action) => {
     default:
       return state;
   }
-}
-
-export const dataIsLoading = (state = false, action) => {
-  switch (action.type) {
-    case 'DATA_IS_LOADING':
-      return action.isLoading;
-
-    default:
-      return state;
-  }
-}
+};
 
 export const astros = (state = [], action) => {
   switch (action.type) {
@@ -26,7 +16,7 @@ export const astros = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export const location = (state = [], action) => {
   switch (action.type) {
@@ -36,4 +26,4 @@ export const location = (state = [], action) => {
     default:
       return state;
   }
-}
+};
