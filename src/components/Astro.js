@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
+
+import { astrosAtTheISS } from "./helpers/componentHelper";
 
 class Astro extends Component {
 
-  showPeople() {
-    if (this.props.astros.message === 'success') {
-      return this.props.astros.people.map(function (el, index) {
-        if (el.craft === 'ISS') {
-          return <div key={index} className='astro p-2 mb-2 d-md-flex'>
-            <i className='fas fa-user-circle'></i>
-            <span>{el.name}</span>
-          </div>
+  generateListOfAstros() {
+    return astrosAtTheISS(this.props.astros.people).map(function (astro, index) {
+        return <div key={index} className='astro p-2 mb-2 d-md-flex'>
+          <i className='fas fa-user-circle'></i>
+          <span>{astro.name}</span>
+        </div>
+      
+    })
+  }
+
+  generateListOfPeople() {
+    return (
+      <div className='p-2 astrosList'>
+        {
+          this.generateListOfAstros()
         }
-      })
-    }
+      </div>
+    )
   }
 
   render() {
-    return (
-      <div className='p-2 astrosList'>
-        {this.showPeople()}
-      </div>
-    );
+    return this.generateListOfPeople()
   }
 }
 

@@ -1,34 +1,55 @@
 import React, { Component } from 'react';
-import './App.css';
+import { connect } from 'react-redux';
+
 import Header from './components/Header';
 import Content from './components/Content';
-import 'bootstrap/dist/css/bootstrap.css';
-
 import { getAstros, getLocation } from './actions/data';
-import { connect } from 'react-redux';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
 class App extends Component {
 
-  componentWillMount() {
+  getData() {
     this.props.getAstros()
     this.props.getLocation()
-    setInterval(() => {
-      this.props.getAstros()
-      this.props.getLocation()
-    }, 5000);
+  }
+
+  updateData() {
+    this.getData()
+    setInterval(() => this.getData(), 5000);
+  }
+
+  isDataFetchSuccess() {
+    return this.props.location.message === 'success' && this.props.location.message === 'success'
+  }
+
+  generateApp() {
+    return (
+      <div className="App container">
+        <Header />
+        <Content />
+      </div>
+    );
+  }
+
+  generatePreloader() {
+    return <img src="./preloader.gif" alt="Loading..." />
+  }
+
+  generateErrorMessage() {
+    return <h2>Something went wrong... Try again later</h2>
+  }
+
+  componentDidMount() {
+    this.updateData()
   }
 
   render() {
-    if (this.props.location.message === 'success' && this.props.location.message === 'success') {
-      return (
-        <div className="App container">
-          <Header />
-          <Content />
-        </div>
-      );
-    } else {
-      return <img src="./preloader.gif" alt="Loading..."/>
-    }
+    if (this.props.hasErrored) return this.generateErrorMessage()
+    if (!this.isDataFetchSuccess()) return this.generatePreloader()
+
+    return this.generateApp()
   }
 }
 

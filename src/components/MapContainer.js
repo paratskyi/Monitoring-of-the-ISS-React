@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
-import MyMarker from './Marker';
-
 import { connect } from 'react-redux';
 
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import CustomMarker from './Marker';
 
 class MapContainer extends Component {
 
   shouldComponentUpdate() {
-    if (this.props.location.message === 'success') {
-      return false;
-    } else {
-      return true;
-    }
+    return false
   }
 
   render() {
@@ -23,7 +18,7 @@ class MapContainer extends Component {
           defaultCenter={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }}
           defaultZoom={3}
         >
-          <MyMarker />
+          <CustomMarker />
         </GoogleMap>
       ));
       return (

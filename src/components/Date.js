@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
 
-import { connect } from 'react-redux';
 
 class Data extends Component {
 
