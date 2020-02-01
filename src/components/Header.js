@@ -7,7 +7,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className='row'>
+            <div className='header'>
                 <Located />
                 <Date />
             </div>

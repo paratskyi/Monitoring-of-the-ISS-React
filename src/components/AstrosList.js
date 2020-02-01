@@ -12,7 +12,7 @@ class AstroList extends Component {
 
   generateTotalAmount() {
     return (
-      <div className="p-2 total-amount text-center">
+      <div className='shadowy-block astro-list_footer'>
         <span>
           Total amount: {this.setTotalAmount()} people on ISS
         </span>
@@ -22,8 +22,10 @@ class AstroList extends Component {
 
   render() {
     return (
-      <div className="col-md-4 p-2 list-wrap">
-        <Astro />
+      <div className='shadowy-block astro-list_wrap'>
+        <div className='astro-list'>
+          <Astro />
+        </div>
         {this.generateTotalAmount()}
       </div>
     );

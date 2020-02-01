@@ -26,7 +26,7 @@ class App extends Component {
 
   generateApp() {
     return (
-      <div className="App container">
+      <div className='App'>
         <Header />
         <Content />
       </div>

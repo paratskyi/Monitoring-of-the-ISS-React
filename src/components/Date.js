@@ -5,17 +5,15 @@ import Timestamp from 'react-timestamp';
 
 class Data extends Component {
 
-  timestamp(){
+  timestamp() {
     return this.props.location.timestamp;
   }
 
   render() {
     return (
-      <div className="col-md-4 p-2 ">
-        <div className="p-2 date">
-          <h3>Current UTC time: <Timestamp time={this.timestamp()} format='time' autoUpdate={60} /></h3>
-          <span><Timestamp time={this.timestamp()} format='date' autoUpdate /></span>
-        </div>
+      <div className='shadowy-block date'>
+        <h3>Current UTC time: <Timestamp time={this.timestamp()} format='time' autoUpdate={60} /></h3>
+        <span><Timestamp time={this.timestamp()} format='date' autoUpdate /></span>
       </div>
     );
   }

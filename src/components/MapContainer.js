@@ -23,14 +23,12 @@ class MapContainer extends Component {
     ));
 
     return (
-      <div className="col-md-8 p-2 map-wrap">
-        <Map
-          isMarkerShown
-          containerElement={<div />}
-          mapElement={<div id="map" className="p-2" />}
-        >
-        </Map>
-      </div>
+      <Map
+        isMarkerShown
+        containerElement={<div className='map-wrap'/>}
+        mapElement={<div id="map" />}
+      >
+      </Map>
     );
   }
 

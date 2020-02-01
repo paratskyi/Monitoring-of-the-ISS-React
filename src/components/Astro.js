@@ -8,7 +8,7 @@ class Astro extends Component {
   generateListOfAstros() {
     return astrosAtTheISS(this.props.astros.people).map(function (astro, index) {
       return (
-        <div key={index} className='astro p-2 mb-2 d-md-flex'>
+        <div key={index} className='shadowy-block astro'>
           <i className='fas fa-user-circle'></i>
           <span>{astro.name}</span>
         </div>
@@ -17,13 +17,7 @@ class Astro extends Component {
   }
 
   generateListOfPeople() {
-    return (
-      <div className='p-2 astro-list'>
-        {
-          this.generateListOfAstros()
-        }
-      </div>
-    );
+    return this.generateListOfAstros();
   }
 
   render() {
