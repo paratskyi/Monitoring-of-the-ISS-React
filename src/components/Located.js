@@ -7,13 +7,13 @@ class Located extends Component {
 
   render() {
     return (
-        <div className='shadowy-block locate'>
-          <h3>ISS is now Located at:</h3>
-          <span>
-            latitude: {latitude(this.props)}	&nbsp;
+      <div className='shadowy-block locate'>
+        <h3>ISS is now Located at:</h3>
+        <span>
+          latitude: {latitude(this.props)}	&nbsp;
             longitude: {longitude(this.props)}
-          </span>
-        </div>
+        </span>
+      </div>
     );
   }
 }

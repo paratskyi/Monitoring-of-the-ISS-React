@@ -5,14 +5,14 @@ import Date from './Date';
 
 class Header extends Component {
 
-    render() {
-        return (
-            <div className='header'>
-                <Located />
-                <Date />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className='header'>
+        <Located />
+        <Date />
+      </div>
+    );
+  }
 }
 
 export default Header;

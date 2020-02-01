@@ -25,7 +25,7 @@ class MapContainer extends Component {
     return (
       <Map
         isMarkerShown
-        containerElement={<div className='map-wrap'/>}
+        containerElement={<div className='map-wrap' />}
         mapElement={<div id="map" />}
       >
       </Map>
