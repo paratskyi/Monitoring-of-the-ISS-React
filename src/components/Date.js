@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
 
-import { connect } from 'react-redux';
 
 class Data extends Component {
 
-    render() {
-        if (this.props.location.message === 'success') {
-            return (
-                <div className="col-md-4 p-2 ">
-                    <div className="p-2 date">
-                        <h3>Current UTC time: <Timestamp time={this.props.location.timestamp} format='time' autoUpdate={60} /></h3>
-                        <span><Timestamp time={this.props.location.timestamp} format='date' autoUpdate /></span>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <span>Loading...</span>
-            )
-        }
-    }
+  timestamp() {
+    return this.props.location.timestamp;
+  }
+
+  render() {
+    return (
+      <div className='shadowy-block date'>
+        <h3>Current UTC time: <Timestamp time={this.timestamp()} format='time' autoUpdate={60} /></h3>
+        <span><Timestamp time={this.timestamp()} format='date' autoUpdate /></span>
+      </div>
+    );
+  }
 }
 
-export default connect(
-    state => ({
-        location: state.app.location
-    }),
-)(Data);
+const mapStateToProps = state => {
+  return {
+    location: state.location,
+  };
+};
+
+export default connect(mapStateToProps)(Data);
 

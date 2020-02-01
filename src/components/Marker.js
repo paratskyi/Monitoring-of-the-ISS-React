@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import { Marker } from 'react-google-maps';
-
 import { connect } from 'react-redux';
 
-class MyMarker extends Component {
+import { Marker } from 'react-google-maps';
+import { latitude, longitude } from "./helpers/componentHelper";
+
+class CustomMarker extends Component {
 
   render() {
-
-    if (this.props.location.message === 'success') {
-      return (
-        <div>
-          <Marker icon={{ url: './iss.png' }} position={{ lat: +this.props.location.iss_position.latitude, lng: +this.props.location.iss_position.longitude }} />
-        </div>
-      );
-    }
+    return (
+      <div>
+        <Marker icon={{ url: './iss.png' }} position={{ lat: latitude(this.props), lng: longitude(this.props) }} />
+      </div>
+    );
   }
-
 };
 
-export default connect(
-  state => ({
-    location: state.app.location
-  }),
-)(MyMarker);
+const mapStateToProps = state => {
+  return {
+    location: state.location,
+  };
+};
 
-
-
+export default connect(mapStateToProps)(CustomMarker);
